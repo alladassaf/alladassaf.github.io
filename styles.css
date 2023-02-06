@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: lightblue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main {
+  padding: 20px;
+  width: 330px;
+  max-width: 80%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+main form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  gap: 15px;
+}
+
+main form .input-field {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+  overflow: hidden;
+}
+
+main form .input-field.flex-100 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+
+main form .input-field.flex-50 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 7.5px);
+          flex: 0 0 calc(50% - 7.5px);
+}
+
+main form .input-field::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  right: 100%;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  background-color: lightcoral;
+  height: 2px;
+  -webkit-transition: -webkit-transform 150ms ease-in-out;
+  transition: -webkit-transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+main form .input-field.focused::before {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+main form .input-field input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  outline: none;
+  padding: 3px;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 30px;
+          flex: 0 0 30px;
+  background-color: #f3f2f2;
+}
+
+main form button {
+  margin-top: 20px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background-color: #48abcb;
+  width: 100%;
+  height: 40px;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+}
+
+main form button:hover {
+  background-color: hsl(calc(195 - 180), 56%, 54%);
+}
+
+main form button.disabled {
+  background-color: #6b99a8;
+}
+/*# sourceMappingURL=styles.css.map */
