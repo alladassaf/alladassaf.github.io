@@ -1,11 +1,30 @@
+const nav = document.querySelector('nav')
 const resultsContainer = document.querySelector('.results-container')
 const inputEl = document.querySelector('.search-input')
-const searchBTN = document.querySelector('.search-box button')
-
+const searchBtn = document.querySelector('.search-box button')
+const toggleBtnEl = document.querySelector('.toggle-box')
+let opened = false
 
 window.onload = () => {
     inputEl.value = ''
 }
+
+toggleBtnEl.addEventListener('click', toggleBTN)
+
+
+function toggleBTN() {
+    opened = !opened
+
+    if (opened) {
+        toggleBtnEl.classList.add('open')
+        nav.classList.add('open')
+    } else if (opened == false && toggleBtnEl.classList.contains('open')) {
+        toggleBtnEl.classList.remove('open')
+        nav.classList.remove('open')
+    }
+
+}
+
 
 console.log(inputEl)
 let results = []
@@ -15,6 +34,7 @@ async function getData() {
 
     createCard(data)
 }
+
 
 function createCard(data) {
 
@@ -26,7 +46,6 @@ function createCard(data) {
         const top = document.createElement('div')
         top.classList.add('top')
         card.insertAdjacentElement('afterbegin', top)
-        // top.style.backgroundImage = `url(${})`
 
         const bottom = document.createElement('div')
         bottom.classList.add('bottom')
@@ -54,7 +73,7 @@ function createCard(data) {
 }
 
 
-searchBTN.addEventListener('click', () => { searchCountry(inputEl, results)})
+searchBtn.addEventListener('click', () => { searchCountry(inputEl, results)})
 
 function searchCountry(inputVal, arr) {
 

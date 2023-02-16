@@ -7,13 +7,18 @@
 :root {
     --page-gutters: 15vw;
     --results-gap: 40px;
+    --secondary-clr: rgb(77, 137, 189);
+}
+
+html {
+    font-size: 1em;
 }
 
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 80p0x;
+    gap: 30px;
 }
 
 header {
@@ -24,7 +29,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(77, 137, 189);
+    background-color: var(--secondary-clr);
     z-index: 999;
 }
 
@@ -71,6 +76,50 @@ nav li {
 nav a {
     text-decoration: none;
     color: black;
+}
+
+.toggle-box {
+    width: 2vw;
+    height: 2vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-box span {
+    position: relative;
+    width: 80%;
+    height: 3px;
+    background-color: black;
+
+    transition: rotate 400ms ease-in;
+}
+
+.toggle-box span::before,
+.toggle-box span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: black;
+    transition: top 150ms ease-in, bottom 150ms ease-in;
+}
+
+.toggle-box span::before {
+    top: -8px;
+}
+
+.toggle-box span::after {
+    bottom: -8px;
+}
+
+.toggle-box.open span::before {
+    top: 0;
+}
+
+.toggle-box.open span::after {
+    bottom: 0;
 }
 
 main {
@@ -218,3 +267,90 @@ main {
 }
 
 
+@media (max-width: 810px) {
+    
+    :root {
+        --page-gutters: 5vw;
+        --results-gap: 20px;
+    }
+
+    html {
+        font-size: 0.9em;
+    }
+
+    .results-container .card {
+        position: relative;
+        background-color: red;
+        flex: 0 0 calc(33% - var(--results-gap));
+        height: 300px;
+    }
+}
+
+
+@media (max-width: 520px) {
+    
+    :root {
+        --page-gutters: 5vw;
+        --results-gap: 20px;
+    }
+
+    html {
+        font-size: 0.9em;
+    }
+
+    header{
+        position: relative;
+        padding: 20px var(--page-gutters);
+    }
+
+    main {
+        margin-top: 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: var(--secondary-clr);
+        clip-path: circle(0 at 100% 0);
+
+        transition: clip-path 150ms ease-in;
+    }
+
+    nav.open {
+        clip-path: circle(150% at 100% 0);        
+    }
+
+    nav ul {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul li {
+        font-size: 1.5rem;
+        letter-spacing: 1.2px;
+    }
+    .toggle-box {
+        display: flex;
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .results-container .card {
+        position: relative;
+        background-color: red;
+        flex: 0 0 calc(50% - var(--results-gap));
+        height: 300px;
+    }
+}
