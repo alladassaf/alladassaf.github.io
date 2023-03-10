@@ -6,7 +6,14 @@ const reviewsContainer = document.querySelector('.reviews-container')
 const reviewsParent = document.querySelector('.reviews')
 const reviews = document.querySelectorAll('.review')
 const pagePath = window.location.pathname.replace("/","")
+const toggleBtn = document.querySelector('.toggle-btn')
+const nav = document.querySelector('.nav ul')
 
+
+
+toggleBtn.addEventListener('click', () => {
+    nav.classList.toggle('open')
+})
 
 
 // Home Page Features
